@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using BattleshipStateTracker.Api.Middlewares;
 using BattleshipStateTracker.Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,9 +47,13 @@ namespace BattleshipStateTracker.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
             {
-                app.UseDeveloperExceptionPage();
+                app.UseMiddleware<ExceptionHandler>();
             }
 
             app.UseHttpsRedirection();

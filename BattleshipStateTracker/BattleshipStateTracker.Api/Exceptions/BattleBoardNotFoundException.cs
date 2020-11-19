@@ -2,7 +2,7 @@
 
 namespace BattleshipStateTracker.Api.Exceptions
 {
-    public class BoardNotFoundException : Exception
+    public class BattleBoardNotFoundException : Exception
     {
     }
 }

@@ -23,7 +23,7 @@ namespace BattleshipStateTracker.Api.Repositories
         {
             if (_board == null)
             {
-                throw new BoardNotFoundException();
+                throw new BattleBoardNotFoundException();
             }
 
             for (int i = 0; i < battleship.Count; i++)
@@ -66,7 +66,7 @@ namespace BattleshipStateTracker.Api.Repositories
         {
             if (_board == null)
             {
-                throw new BoardNotFoundException();
+                throw new BattleBoardNotFoundException();
             }
 
             var x = position[0];
