@@ -42,6 +42,7 @@ namespace BattleshipStateTracker.Api.Middlewares
                 case BattleshipOverflowException _:
                 case BattleshipOverlappedException _:
                 case BattleBoardNotFoundException _:
+                case BattleshipNotAlignedException _:
                     statusCode = StatusCodes.Status400BadRequest;
                     break;
                 default:
