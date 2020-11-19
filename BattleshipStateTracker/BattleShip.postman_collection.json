@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "97bff7e9-20b0-4f47-8275-aebd7dafa5dc",
+		"name": "BattleShip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[Local]CreateBattleshipBoard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44364/battleshipstatetracker/createbattleshipboard",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44364",
+					"path": [
+						"battleshipstatetracker",
+						"createbattleshipboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Local]AddBattleship",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Battleship\": [\r\n        [\r\n            10,\r\n            6\r\n        ],\r\n        [\r\n            10,\r\n            9\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44364/battleshipstatetracker/addbattleship",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44364",
+					"path": [
+						"battleshipstatetracker",
+						"addbattleship"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Local]TakeAttack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Position\": [\r\n        1,\r\n        6\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44364/battleshipstatetracker/takeattack",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44364",
+					"path": [
+						"battleshipstatetracker",
+						"takeattack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Azure]CreateBattleshipBoard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://battleshipstatetracker.azurewebsites.net/battleshipstatetracker/createbattleshipboard",
+					"protocol": "https",
+					"host": [
+						"battleshipstatetracker",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"battleshipstatetracker",
+						"createbattleshipboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Azure]AddBattleship",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Battleship\": [\r\n        [\r\n            2,\r\n            6\r\n        ],\r\n        [\r\n            3,\r\n            6\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://battleshipstatetracker.azurewebsites.net/battleshipstatetracker/addbattleship",
+					"protocol": "https",
+					"host": [
+						"battleshipstatetracker",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"battleshipstatetracker",
+						"addbattleship"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Azure]TakeAttack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Position\": [\r\n        3,\r\n        6\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://battleshipstatetracker.azurewebsites.net/battleshipstatetracker/takeattack",
+					"protocol": "https",
+					"host": [
+						"battleshipstatetracker",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"battleshipstatetracker",
+						"takeattack"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
