@@ -1,4 +1,5 @@
-﻿using BattleshipStateTracker.Api.Repositories;
+﻿using BattleshipStateTracker.Api.Models;
+using BattleshipStateTracker.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -24,10 +25,11 @@ namespace BattleshipStateTracker.Api.Controllers
             return Ok(res);
         }
 
-        [HttpPost]
-        public IActionResult AddBattleship()
+        [HttpPost("addbattleship")]
+        public IActionResult AddBattleship(Battleship battleship)
         {
-            return Ok();
+            var res = _repo.AddBattleship(battleship);
+            return Ok(res);
         }
 
         [HttpPost]

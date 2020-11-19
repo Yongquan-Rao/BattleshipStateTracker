@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BattleshipStateTracker.Api.Exceptions;
+using BattleshipStateTracker.Api.Models;
+using System;
 using System.Collections.Generic;
 
 namespace BattleshipStateTracker.Api.Repositories
@@ -7,7 +9,7 @@ namespace BattleshipStateTracker.Api.Repositories
     {
         List<List<int>> CreateBoard();
 
-        bool AddBattleship();
+        List<List<int>> AddBattleship(Battleship battleship);
 
         bool TakeAttack();
     }
@@ -17,9 +19,27 @@ namespace BattleshipStateTracker.Api.Repositories
         private const int LENGTH = 10;
         private List<List<int>> _board;
 
-        public bool AddBattleship()
+        public List<List<int>> AddBattleship(Battleship battleship)
         {
-            throw new NotImplementedException();
+            if (_board == null)
+            {
+                throw new BoardNotFoundException();
+            }
+
+            var battleshipInBoard = battleship.BattleshipInBoard;
+            for (int i = 0; i < battleshipInBoard.Count; i++)
+            {
+                var x = battleshipInBoard[i][0];
+                var y = battleshipInBoard[i][1];
+
+                if (_board[x][y] != 0)
+                {
+                    throw new BattleshipOverlappedException();
+                }
+                
+                _board[x][y] = 1;
+            }
+            return _board;
         }
 
         public List<List<int>> CreateBoard()
