@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BattleshipStateTracker.Api</name>
+    </assembly>
+    <members>
+        <member name="M:BattleshipStateTracker.Api.Controllers.BattleshipStateTrackerController.CreateBattleshipBoard">
+            <summary>
+            Create a battleship board
+            </summary>
+            <remarks>
+            </remarks>
+            <returns>A new board</returns>
+        </member>
+        <member name="M:BattleshipStateTracker.Api.Controllers.BattleshipStateTrackerController.AddBattleship(BattleshipStateTracker.Api.Models.AddBattleshipRequest)">
+            <summary>
+            Add a battleship to board
+            </summary>
+            <remarks>
+            Sample request:
+            
+                POST AddBattleship
+                {
+                    Battleship:[
+                        [1,2],
+                        [1,3],
+                        [1,4]
+                    ]
+                }
+            </remarks>
+            <returns>An updated board</returns>
+        </member>
+        <member name="M:BattleshipStateTracker.Api.Controllers.BattleshipStateTrackerController.TakeAttack(BattleshipStateTracker.Api.Models.AttackRequest)">
+            <summary>
+            Take an attack
+            </summary>
+            <remarks>
+            Sample request:
+            
+                POST TakeAttack
+                {
+                    Position:
+                        [1,2]
+                }
+            </remarks>
+            <returns>An attack state, HIT or MISS</returns>
+        </member>
+    </members>
+</doc>

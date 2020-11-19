@@ -18,21 +18,56 @@ namespace BattleshipStateTracker.Api.Controllers
             _repo = repo;
         }
 
-        [HttpPost("createbattleshipboard")]
+        /// <summary>
+        /// Create a battleship board
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        /// <returns>A new board</returns>
+        [HttpPost("CreateBattleshipBoard")]
         public IActionResult CreateBattleshipBoard()
         {
             var res = _repo.CreateBattleshipBoard();
             return Ok(new CreateBattleshipBoardResponse {  BattleshipBoard = res });
         }
 
-        [HttpPost("addbattleship")]
+        /// <summary>
+        /// Add a battleship to board
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST AddBattleship
+        ///     {
+        ///         Battleship:[
+        ///             [1,2],
+        ///             [1,3],
+        ///             [1,4]
+        ///         ]
+        ///     }
+        /// </remarks>
+        /// <returns>An updated board</returns>
+        [HttpPost("AddBattleship")]
         public IActionResult AddBattleship(AddBattleshipRequest request)
         {
             var res = _repo.AddBattleship(request.Battleship);
             return Ok(new AddBattleshipResponse {  BattleshipBoard = res });
         }
 
-        [HttpPost("takeattack")]
+        /// <summary>
+        /// Take an attack
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST TakeAttack
+        ///     {
+        ///         Position:
+        ///             [1,2]
+        ///     }
+        /// </remarks>
+        /// <returns>An attack state, HIT or MISS</returns>
+        [HttpPost("TakeAttack")]
         public IActionResult TakeAttack(AttackRequest request)
         {
             var res = _repo.TakeAttack(request.Position);
