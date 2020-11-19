@@ -11,7 +11,7 @@ namespace BattleshipStateTracker.Api.Repositories
 
         List<List<int>> AddBattleship(Battleship battleship);
 
-        bool TakeAttack();
+        AttackResult TakeAttack(Attack attack);
     }
 
     public class BattleshipBoardRepository : IBattleshipBoardRepository
@@ -58,9 +58,17 @@ namespace BattleshipStateTracker.Api.Repositories
             return _board;
         }
 
-        public bool TakeAttack()
+        public AttackResult TakeAttack(Attack attack)
         {
-            throw new NotImplementedException();
+            if (_board == null)
+            {
+                throw new BoardNotFoundException();
+            }
+
+            var x = attack.Position[0];
+            var y = attack.Position[1];
+
+            return _board[x][y] == 1 ? AttackResult.HIT : AttackResult.MISS;
         }
     }
 }

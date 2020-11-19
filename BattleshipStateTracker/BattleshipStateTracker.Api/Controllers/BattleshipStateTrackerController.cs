@@ -32,10 +32,11 @@ namespace BattleshipStateTracker.Api.Controllers
             return Ok(res);
         }
 
-        [HttpPost]
-        public IActionResult TakeAttack()
+        [HttpPost("takeattack")]
+        public IActionResult TakeAttack(Attack attack)
         {
-            return Ok();
+            var res = _repo.TakeAttack(attack);
+            return Ok(res);
         }
     }
 }
