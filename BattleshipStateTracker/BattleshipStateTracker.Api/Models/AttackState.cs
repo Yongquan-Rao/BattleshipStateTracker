@@ -1,6 +1,6 @@
 ﻿namespace BattleshipStateTracker.Api.Models
 {
-    public enum AttackResult
+    public enum AttackState
     {
         MISS = 0,
         HIT = 1

@@ -18,25 +18,25 @@ namespace BattleshipStateTracker.Api.Controllers
             _repo = repo;
         }
 
-        [HttpPost("createboard")]
-        public IActionResult CreateBoard()
+        [HttpPost("createbattleshipboard")]
+        public IActionResult CreateBattleshipBoard()
         {
-            var res = _repo.CreateBoard();
-            return Ok(res);
+            var res = _repo.CreateBattleshipBoard();
+            return Ok(new CreateBattleshipBoardResponse {  BattleshipBoard = res });
         }
 
         [HttpPost("addbattleship")]
-        public IActionResult AddBattleship(Battleship battleship)
+        public IActionResult AddBattleship(AddBattleshipRequest request)
         {
-            var res = _repo.AddBattleship(battleship);
-            return Ok(res);
+            var res = _repo.AddBattleship(request.Battleship);
+            return Ok(new AddBattleshipResponse {  BattleshipBoard = res });
         }
 
         [HttpPost("takeattack")]
-        public IActionResult TakeAttack(Attack attack)
+        public IActionResult TakeAttack(AttackRequest request)
         {
-            var res = _repo.TakeAttack(attack);
-            return Ok(res);
+            var res = _repo.TakeAttack(request.Position);
+            return Ok(new AttackResponse {  Code = (int)res, Message = res.ToString() });
         }
     }
 }

@@ -7,11 +7,11 @@ namespace BattleshipStateTracker.Api.Repositories
 {
     public interface IBattleshipBoardRepository
     {
-        List<List<int>> CreateBoard();
+        List<List<int>> CreateBattleshipBoard();
 
-        List<List<int>> AddBattleship(Battleship battleship);
+        List<List<int>> AddBattleship(List<List<int>> battleship);
 
-        AttackResult TakeAttack(Attack attack);
+        AttackState TakeAttack(List<int> attack);
     }
 
     public class BattleshipBoardRepository : IBattleshipBoardRepository
@@ -19,18 +19,22 @@ namespace BattleshipStateTracker.Api.Repositories
         private const int LENGTH = 10;
         private List<List<int>> _board;
 
-        public List<List<int>> AddBattleship(Battleship battleship)
+        public List<List<int>> AddBattleship(List<List<int>> battleship)
         {
             if (_board == null)
             {
                 throw new BoardNotFoundException();
             }
 
-            var battleshipInBoard = battleship.BattleshipInBoard;
-            for (int i = 0; i < battleshipInBoard.Count; i++)
+            for (int i = 0; i < battleship.Count; i++)
             {
-                var x = battleshipInBoard[i][0];
-                var y = battleshipInBoard[i][1];
+                var x = battleship[i][0];
+                var y = battleship[i][1];
+
+                if (x < 0 || x >= LENGTH || y < 0 || y >= LENGTH)
+                {
+                    throw new BattleshipOverflowException();
+                }
 
                 if (_board[x][y] != 0)
                 {
@@ -42,7 +46,7 @@ namespace BattleshipStateTracker.Api.Repositories
             return _board;
         }
 
-        public List<List<int>> CreateBoard()
+        public List<List<int>> CreateBattleshipBoard()
         {
             _board = new List<List<int>>();
             for (int i = 0; i < LENGTH; i++)
@@ -58,17 +62,17 @@ namespace BattleshipStateTracker.Api.Repositories
             return _board;
         }
 
-        public AttackResult TakeAttack(Attack attack)
+        public AttackState TakeAttack(List<int> position)
         {
             if (_board == null)
             {
                 throw new BoardNotFoundException();
             }
 
-            var x = attack.Position[0];
-            var y = attack.Position[1];
+            var x = position[0];
+            var y = position[1];
 
-            return _board[x][y] == 1 ? AttackResult.HIT : AttackResult.MISS;
+            return _board[x][y] == 1 ? AttackState.HIT : AttackState.MISS;
         }
     }
 }

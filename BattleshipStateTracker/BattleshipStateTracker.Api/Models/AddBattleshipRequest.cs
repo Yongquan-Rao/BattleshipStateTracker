@@ -2,8 +2,8 @@
 
 namespace BattleshipStateTracker.Api.Models
 {
-    public class Battleship
+    public class AddBattleshipRequest
     {
-        public List<List<int>> BattleshipInBoard { get; set; }
+        public List<List<int>> Battleship { get; set; }
     }
 }

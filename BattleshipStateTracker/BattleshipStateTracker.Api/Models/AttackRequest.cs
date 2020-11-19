@@ -2,7 +2,7 @@
 
 namespace BattleshipStateTracker.Api.Models
 {
-    public class Attack
+    public class AttackRequest
     {
         public List<int> Position { get; set; }
     }
