@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Projects\BattleshipStateTracker\BattleshipStateTracker\BattleshipStateTracker.Api\BattleshipStateTracker.Api.xml</DocumentationFile>
+    <DocumentationFile>BattleshipStateTracker.Api.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>BattleshipStateTracker.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
