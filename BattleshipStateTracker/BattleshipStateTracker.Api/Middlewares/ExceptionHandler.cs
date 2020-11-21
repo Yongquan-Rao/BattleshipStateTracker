@@ -39,7 +39,6 @@ namespace BattleshipStateTracker.Api.Middlewares
             int statusCode;
             switch (exception)
             {
-                case BattleshipOverflowException _:
                 case BattleshipOverlappedException _:
                 case BattleBoardNotFoundException _:
                 case BattleshipNotAlignedException _:
